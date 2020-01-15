@@ -1,0 +1,23 @@
+﻿@model List<Google.Apis.YouTube.v3.Data.SearchResult>
+
+<style>
+    .personalizado {
+        background-color: #4CAF50; /* Green */
+        border: groove;
+        color: white;
+        padding: 10px 22px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+</style>
+
+@for (int i = 0; i < @Model.Count; i++)
+{
+    @Model[i].Snippet.Title
+    <button align="left" class="btn-success personalizado" onclick="btnadd('@Model[i].Id.VideoId')">Add to PlayList</button>
+    <img onclick="btnReproducirVideo('@Model[i].Id.VideoId')" class="img-responsive" src="http://img.youtube.com/vi/@Model[i].Id.VideoId/mqdefault.jpg" alt="@Model[i].Snippet.Title">
+    <input id=i type="hidden" value="@Model[i].Id.VideoId" />
+    <br />
+}

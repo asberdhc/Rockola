@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<style>
+    #ListYoutube {
+        grid-area: ListYoutube;
+        height: 300px;
+        overflow-y: scroll;
+    }
+
+    #VideoPlay {
+        grid-area: VideoPlay;
+        height: 500;
+    }
+
+    #PlayList {
+        grid-area: PlayList;
+        height: 600;
+        overflow-x: scroll;
+    }
+</style>
+<h2>Getting started</h2>
+<input type="text" class="form-control" id="txtsearch" placeholder="Buscar" />
+<a class="btn btn-default" href="javascript:void(0)" onclick="btnSearch()">Buscar &raquo;</a>
+<br />
+<br />
+<div id="VideoPlay">
+
+
+</div>
+<br />
+<div align="right" class="container" id="ListYoutube">
+
+</div>
+<p>PlayList</p>
+<div style="overflow-x:scroll;">
+    <table class=" table table-striped table-bordered table-hover">
+        <tr id="PlayList">
+
+        </tr>
+    </table>
+</div>
+<script>
+    function btnSearch() {
+        $.ajax({
+            url: '@Url.Action("SearchVideo")?Keyword=' + $('#txtsearch').val(),
+            type: "GET",
+            success: function (result) {
+                $('#ListYoutube').html(result);
+            }
+        });
+    }
+
+    function btnadd(Id) {
+        console.log(Id);
+       $.ajax({
+           url: '@Url.Action("AddPlayList")?idVideo=' + Id,
+           type: "GET",
+           success: function (result) {
+               $('#PlayList').html(result);
+           }
+        });
+    }
+
+    function btnReproducirVideo(Id) {
+        console.log(Id);
+        $.ajax({
+            url: '@Url.Action("reproduceVideo")?idVideo=' + Id,
+            type: "GET",
+            success: function (result) {
+                console.log(result);
+                $('#VideoPlay').html(result);
+            }
+        });
+    }
+</script>
