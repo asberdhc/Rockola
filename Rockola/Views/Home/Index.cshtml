@@ -1,6 +1,27 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<style type="text/css">
+    .personalizado{
+        text-decoration: none;
+        padding: 3px;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-family: helvetica;
+        font-weight: 300;
+        font-size: 25px;
+        font-style: italic;
+        color: #006505;
+        background-color: #82b085;
+        border-radius: 15px;
+        border: 3px double #006505;
+    }
+
+        .boton_1:hover {
+            opacity: 0.6;
+            text-decoration: none;
+        }
+</style>
 <style>
     #ListYoutube {
         grid-area: ListYoutube;
@@ -23,7 +44,7 @@
     <br />
     <input type="text" class="form-control" id="txtsearch" placeholder="Buscar" />
     <br />
-    <a class="btn btn-default" href="javascript:void(0)" onclick="btnSearch()">Buscar &raquo;</a>
+    <a class="personalizado" href="javascript:void(0)" onclick="btnSearch()">Buscar &raquo;</a>
     <br />
     <br />
     <div id="VideoPlay">
