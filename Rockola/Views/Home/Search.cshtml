@@ -1,23 +1,21 @@
-﻿@model List<Google.Apis.YouTube.v3.Data.SearchResult>
-
-<style>
-    .personalizado {
-        background-color: #4CAF50; /* Green */
-        border: groove;
-        color: white;
-        padding: 10px 22px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-    }
-</style>
+﻿@model List<Rockola.ViewModels.SearchResultDTO>
 
 @for (int i = 0; i < @Model.Count; i++)
 {
-    @Model[i].Snippet.Title
-    <button align="left" class="btn-success personalizado" onclick="btnadd('@Model[i].Id.VideoId')">Add to PlayList</button>
-    <img onclick="btnReproducirVideo('@Model[i].Id.VideoId')" class="img-responsive" src="http://img.youtube.com/vi/@Model[i].Id.VideoId/mqdefault.jpg" alt="@Model[i].Snippet.Title">
-    <input id=i type="hidden" value="@Model[i].Id.VideoId" />
-    <br />
+    <div class="card">
+        <div class="row no-gutters">
+            <div class="col-4 mx-auto my-auto bg-dark">
+                <img onclick="btnReproducirVideo('@Model[i].VideoId')" src="http://img.youtube.com/vi/@Model[i].VideoId/mqdefault.jpg" alt="@Model[i].Title">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">@Model[i].Title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <button class="btn-success" onclick="btnadd('@Model[i].VideoId')">Add to PlayList</button>
+                    <input id=i type="hidden" value="@Model[i].VideoId" />
+                    <p class="card-text"><small class="text-muted">@Model[i].VideoId</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
 }
